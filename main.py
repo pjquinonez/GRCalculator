@@ -15,3 +15,5 @@ g = gr.metric(g_matrix, [t, x, y, z])
 chris = gr.christoffel(g)
 print(chris.solve(0,0,0))
 
+# I am testing some changes
+
