@@ -60,3 +60,10 @@ class riemann:
     def get_metric(self):
         return self.__metric
 
+    def solve(self, alpha, beta, mu, nu):
+        return (
+            sym.diff(self.__christoffel.solve(alpha, beta, nu), self.__metric.get_var(mu)) - sym.diff(self.__christoffel.solve(alpha, beta, mu), self.__metric.get_var(nu))
+            + sum(self.__christoffel.solve(alpha, mu, i)*self.__christoffel.solve(i, beta, nu) for i in range(4))
+            - sum(self.__christoffel.solve(alpha, nu, i)*self.__christoffel.solve(i, beta, mu) for i in range(4))
+        )
+
